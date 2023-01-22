@@ -1,0 +1,31 @@
+###################################
+# name: Remove old artifacts
+# description: Remove Old Artifacts before 5 days ago
+# github URL: https://github.com/chenyangcyx
+# create date: 2023/01/23
+###################################
+
+
+name: Remove old artifacts
+
+on:
+  schedule:
+    # Every day at 12 am
+    - cron: '0 7 * * *'
+#  push:
+#    branches: master
+
+jobs:
+  remove-old-artifacts:
+    # runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+
+    steps:
+    - name: Remove old artifacts
+      uses: c-hive/gha-remove-artifacts@v1
+      with:
+        # age: '5 days'
+        # Optional inputs
+        # skip-tags: true
+        skip-recent: 5
