@@ -6,7 +6,7 @@
 ###################################
 
 
-name: XiaoYu XY-C5 compile(default)
+name: XiaoYu XY-C5 compile(mwan3)
 
 on:
  push:
@@ -42,7 +42,7 @@ jobs:
       - name: Create custom .config file
         run: |
           rm -f .config*
-          cp ./cyX-files/github-workflow/default.txt ./.config
+          cp ./cyX-files/github-workflow/mwan3.txt ./.config
 
       - name: Download package
         run: |
