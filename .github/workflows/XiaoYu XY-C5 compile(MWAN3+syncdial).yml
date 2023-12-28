@@ -46,7 +46,7 @@ jobs:
 
       - name: Download package
         run: |
-          make download
+          make download -j8
 
       - name: Compile with single thread
         run: |
