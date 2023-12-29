@@ -6,7 +6,7 @@
 ###################################
 
 
-name: XiaoYu XY-C5 compile(mwan3)
+name: XiaoYu XY-C5 compile(MWAN3)
 
 on:
  push:
@@ -54,7 +54,7 @@ jobs:
 
       - name: Rename bin file
         run: |
-          now_date=`date --date=@$(($(date -u +%s)+8*60*60)) -u +"%Y%m%d.%H%M%S"`
+          now_date=`date --date=@$(($(date -u +%s)+8*60*60)) -u +"%Y-%m-%d %H.%M.%S"`
           old_bin_path=`pwd`"/bin/targets/ramips/mt7621/openwrt-ramips-mt7621-xiaoyu_xy-c5-squashfs-sysupgrade.bin"
           new_bin_path=${old_bin_path%/*}"/"$now_date${old_bin_path##*/}
           mv $old_bin_path $new_bin_path
