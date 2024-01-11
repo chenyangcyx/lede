@@ -1,0 +1,67 @@
+###################################
+# name: XiaoYu XY-C5 compile
+# description: Build my own XiaoYu XY-C5 with GitHub Actions
+# github URL: https://github.com/chenyangcyx
+# create date: 2023/12/28
+###################################
+
+
+name: XiaoYu XY-C5 compile(MWAN3+syncdial+frp)
+
+on:
+ push:
+   branches: 
+     - master
+
+# on:
+#  schedule:
+#    - cron: 0 20 * * *
+
+jobs: 
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Initialize system environment
+        run: |
+          sudo -E apt -yqq update
+          sudo -E apt -yqq dist-upgrade
+
+          sudo -E apt -yqq install wget curl screen zip unzip bzip2 ack antlr3 aria2 asciidoc autoconf automake autopoint binutils bison build-essential ccache cmake cpio device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pip libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl vim xmlto xxd zlib1g-dev python3-pyelftools python3-setuptools libfuse-dev
+
+          sudo -E apt -yqq dist-upgrade
+
+      - name: Prepare feeds script
+        run: |
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+
+      - name: Create custom .config file
+        run: |
+          rm -f .config*
+          cp ./cyX-files/github-workflow/mwan3_syncdial_frp.txt ./.config
+
+      - name: Download package
+        run: |
+          make download -j8
+
+      - name: Compile with single thread
+        run: |
+          make V=s
+
+      - name: Rename bin file
+        run: |
+          now_date=`date --date=@$(($(date -u +%s)+8*60*60)) -u +"%Y-%m-%d-%H-%M-%S"`
+          old_bin_path=`pwd`"/bin/targets/ramips/mt7621/openwrt-ramips-mt7621-xiaoyu_xy-c5-squashfs-sysupgrade.bin"
+          new_bin_path=${old_bin_path%/*}"/"$now_date${old_bin_path##*/}
+          mv $old_bin_path $new_bin_path
+
+      - name: Upload Compile Result files
+        uses: actions/upload-artifact@main
+        with:
+          name: XiaoYu XY-C5 Compiled Files
+          # path: ./bin/targets/ramips/mt7621/
+          path: ./bin/
