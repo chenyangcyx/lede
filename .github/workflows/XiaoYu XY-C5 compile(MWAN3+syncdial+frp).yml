@@ -2,7 +2,7 @@
 # name: XiaoYu XY-C5 compile
 # description: Build my own XiaoYu XY-C5 with GitHub Actions
 # github URL: https://github.com/chenyangcyx
-# create date: 2023/12/28
+# create date: 2025/02/16
 ###################################
 
 
@@ -27,12 +27,14 @@ jobs:
 
       - name: Initialize system environment
         run: |
-          sudo -E apt -yqq update
-          sudo -E apt -yqq dist-upgrade
+          sudo apt update -y
+          sudo apt dist-upgrade -y
+          sudo apt full-upgrade -y
 
-          sudo -E apt -yqq install ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache clang cmake cpio curl device-tree-compiler flex gawk gcc-multilib g++-multilib gettext genisoimage git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev libssl-dev libtool llvm lrzsz msmtp ninja-build p7zip p7zip-full patch pkgconf python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+          sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache clang cmake cpio curl device-tree-compiler flex gawk gcc-multilib g++-multilib gettext genisoimage git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev libssl-dev libtool llvm lrzsz msmtp ninja-build p7zip p7zip-full patch pkgconf python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
 
-          sudo -E apt -yqq dist-upgrade
+          sudo apt dist-upgrade -y
+          sudo apt full-upgrade -y
 
       - name: Prepare feeds script
         run: |
@@ -46,11 +48,11 @@ jobs:
 
       - name: Download package
         run: |
-          make download -j8
+          make download
 
       - name: Compile with single thread
         run: |
-          make V=s
+          make V=s -j1
 
       - name: Rename bin file
         run: |
