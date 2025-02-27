@@ -2019,6 +2019,7 @@ CONFIG_PACKAGE_libiwinfo-data=y
 # CONFIG_PACKAGE_brcmfmac-firmware-4329-sdio is not set
 # CONFIG_PACKAGE_brcmfmac-firmware-4339-sdio is not set
 # CONFIG_PACKAGE_brcmfmac-firmware-43430a0-sdio is not set
+# CONFIG_PACKAGE_brcmfmac-firmware-43430b0-sdio is not set
 # CONFIG_PACKAGE_brcmfmac-firmware-43455-sdio-phicomm-n1 is not set
 # CONFIG_PACKAGE_brcmfmac-firmware-43602a1-pcie is not set
 # CONFIG_PACKAGE_brcmfmac-firmware-4366b1-pcie is not set
@@ -2026,6 +2027,7 @@ CONFIG_PACKAGE_libiwinfo-data=y
 # CONFIG_PACKAGE_brcmfmac-firmware-43752-sdio is not set
 # CONFIG_PACKAGE_brcmfmac-firmware-usb is not set
 # CONFIG_PACKAGE_brcmfmac-nvram-43430-sdio is not set
+# CONFIG_PACKAGE_brcmfmac-nvram-43430b0-sdio is not set
 # CONFIG_PACKAGE_brcmfmac-nvram-43455-sdio is not set
 # CONFIG_PACKAGE_brcmfmac-nvram-4356-sdio is not set
 # CONFIG_PACKAGE_brcmsmac-firmware is not set
@@ -2561,7 +2563,7 @@ CONFIG_PACKAGE_kmod-nls-base=y
 # CONFIG_PACKAGE_kmod-ebtables-ipv6 is not set
 # CONFIG_PACKAGE_kmod-ebtables-watchers is not set
 CONFIG_PACKAGE_kmod-ip6tables=y
-# CONFIG_PACKAGE_kmod-ip6tables-extra is not set
+CONFIG_PACKAGE_kmod-ip6tables-extra=y
 # CONFIG_PACKAGE_kmod-ipt-account is not set
 # CONFIG_PACKAGE_kmod-ipt-asn is not set
 # CONFIG_PACKAGE_kmod-ipt-chaos is not set
@@ -3088,7 +3090,8 @@ CONFIG_PACKAGE_kmod-usb3=y
 #
 # Wireless Drivers
 #
-# CONFIG_PACKAGE_kmod-aic8800 is not set
+# CONFIG_PACKAGE_kmod-aic8800s is not set
+# CONFIG_PACKAGE_kmod-aic8800u is not set
 # CONFIG_PACKAGE_kmod-ar5523 is not set
 # CONFIG_PACKAGE_kmod-ath is not set
 # CONFIG_PACKAGE_kmod-ath10k is not set
@@ -4931,7 +4934,6 @@ CONFIG_PACKAGE_luci-app-opkg=y
 # end of Configuration
 
 # CONFIG_PACKAGE_luci-app-pbr is not set
-# CONFIG_PACKAGE_luci-app-pcimodem is not set
 # CONFIG_PACKAGE_luci-app-pgyvpn is not set
 # CONFIG_PACKAGE_luci-app-phtunnel is not set
 # CONFIG_PACKAGE_luci-app-polipo is not set
@@ -4986,7 +4988,6 @@ CONFIG_PACKAGE_TURBOACC_INCLUDE_BBR_CCA=y
 # CONFIG_PACKAGE_luci-app-unbound is not set
 CONFIG_PACKAGE_luci-app-upnp=y
 # CONFIG_PACKAGE_luci-app-usb-printer is not set
-# CONFIG_PACKAGE_luci-app-usbmodem is not set
 # CONFIG_PACKAGE_luci-app-usteer is not set
 # CONFIG_PACKAGE_luci-app-uugamebooster is not set
 # CONFIG_PACKAGE_luci-app-v2ray-server is not set
@@ -4995,7 +4996,7 @@ CONFIG_PACKAGE_luci-app-upnp=y
 CONFIG_PACKAGE_luci-app-vlmcsd=y
 # CONFIG_PACKAGE_luci-app-vnstat is not set
 # CONFIG_PACKAGE_luci-app-vnstat2 is not set
-# CONFIG_PACKAGE_luci-app-vsftpd is not set
+CONFIG_PACKAGE_luci-app-vsftpd=y
 # CONFIG_PACKAGE_luci-app-watchcat is not set
 # CONFIG_PACKAGE_luci-app-webadmin is not set
 # CONFIG_PACKAGE_luci-app-webrestriction is not set
@@ -5345,6 +5346,7 @@ CONFIG_PACKAGE_luci-i18n-upnp-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-upnp-zh-tw is not set
 CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-tw is not set
+CONFIG_PACKAGE_luci-i18n-vsftpd-zh-cn=y
 # CONFIG_PACKAGE_luci-i18n-wol-ar is not set
 # CONFIG_PACKAGE_luci-i18n-wol-bg is not set
 # CONFIG_PACKAGE_luci-i18n-wol-bn is not set
@@ -5541,7 +5543,8 @@ CONFIG_PACKAGE_curl=y
 # CONFIG_PACKAGE_rsync is not set
 # CONFIG_PACKAGE_rsyncd is not set
 # CONFIG_PACKAGE_vsftpd is not set
-# CONFIG_PACKAGE_vsftpd-alt is not set
+CONFIG_PACKAGE_vsftpd-alt=y
+CONFIG_VSFTPD_USE_UCI_SCRIPTS=y
 # CONFIG_PACKAGE_vsftpd-tls is not set
 # CONFIG_PACKAGE_wget-nossl is not set
 CONFIG_PACKAGE_wget-ssl=y
@@ -5572,8 +5575,8 @@ CONFIG_PACKAGE_wget-ssl=y
 # CONFIG_PACKAGE_fwknop is not set
 # CONFIG_PACKAGE_fwknopd is not set
 CONFIG_PACKAGE_ip6tables=y
-# CONFIG_PACKAGE_ip6tables-extra is not set
-# CONFIG_PACKAGE_ip6tables-mod-nat is not set
+CONFIG_PACKAGE_ip6tables-extra=y
+CONFIG_PACKAGE_ip6tables-mod-nat=y
 CONFIG_PACKAGE_iptables=y
 # CONFIG_IPTABLES_CONNLABEL is not set
 # CONFIG_IPTABLES_NFTABLES is not set
@@ -6492,6 +6495,7 @@ CONFIG_PACKAGE_ppp-mod-pppoe=y
 # CONFIG_PACKAGE_proto-bonding is not set
 # CONFIG_PACKAGE_proxychains-ng is not set
 # CONFIG_PACKAGE_ptunnel-ng is not set
+# CONFIG_PACKAGE_quectel-cm is not set
 # CONFIG_PACKAGE_radsecproxy is not set
 # CONFIG_PACKAGE_ratched is not set
 # CONFIG_PACKAGE_ratechecker is not set
@@ -6648,12 +6652,6 @@ CONFIG_PACKAGE_vlmcsd=y
 # CONFIG_PACKAGE_fconfig is not set
 # CONFIG_PACKAGE_uboot-envtools is not set
 # end of Boot Loaders
-
-#
-# CPE
-#
-# CONFIG_PACKAGE_sendat is not set
-# end of CPE
 
 #
 # Compression
@@ -7182,7 +7180,6 @@ CONFIG_PACKAGE_openssl-util=y
 # CONFIG_PACKAGE_qfirehose is not set
 # CONFIG_PACKAGE_qmi-utils is not set
 # CONFIG_PACKAGE_qrencode is not set
-# CONFIG_PACKAGE_quectel-CM-5G is not set
 # CONFIG_PACKAGE_quota is not set
 # CONFIG_PACKAGE_ravpower-mcu is not set
 # CONFIG_PACKAGE_readsb is not set
@@ -7205,6 +7202,7 @@ CONFIG_PACKAGE_openssl-util=y
 # CONFIG_PACKAGE_selinux-chcat is not set
 # CONFIG_PACKAGE_selinux-semanage is not set
 # CONFIG_PACKAGE_semodule-utils is not set
+# CONFIG_PACKAGE_sendat is not set
 # CONFIG_PACKAGE_serdisplib-tools is not set
 # CONFIG_PACKAGE_setools is not set
 # CONFIG_PACKAGE_setserial is not set
